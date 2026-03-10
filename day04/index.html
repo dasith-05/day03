@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCSC Student Toolkit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="https://via.placeholder.com/50x50?text=UCSC" alt="UCSC Logo" class="logo">
+            <span class="brand-name">UCSC Toolkit</span>
+        </div>
+        <div class="nav-center">
+            <button class="nav-item" onclick="showSection('gpa-calc')">GPA Calculator</button>
+            <button class="nav-item" onclick="showSection('study-timer')">Study Timer</button>
+            <button class="nav-item" onclick="showSection('idea-board')">Idea Board</button>
+        </div>
+        <div class="nav-right">
+            <label class="switch">
+                <input type="checkbox" id="dark-mode-toggle">
+                <span class="slider round"></span>
+            </label>
+            <span class="mode-label">Dark Mode</span>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <h3>Upcoming Events</h3>
+            <ul class="event-list">
+                <li class="event-item">Midterm Exams - March 15</li>
+                <li class="event-item">Project Submission - March 20</li>
+                <li class="event-item">Guest Lecture - March 25</li>
+                <li class="event-item">Workshop: Git & GitHub - April 2</li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <!-- GPA Calculator Section -->
+            <section id="gpa-calc" class="tab-content fade-in">
+                <h2>GPA Calculator</h2>
+                <div class="gpa-inputs">
+                    <div id="course-list">
+                        <div class="course-row">
+                            <input type="number" placeholder="Credits (e.g. 3)" class="credits">
+                            <input type="text" placeholder="Grade (e.g. A, B+)" class="grade">
+                        </div>
+                    </div>
+                    <button class="btn-secondary" onclick="addCourseRow()">Add Course</button>
+                    <button class="btn-primary" onclick="calculateGPA()">Calculate GPA</button>
+                </div>
+                <div id="gpa-result" class="result-display">
+                    Overall GPA: <span id="gpa-value">0.00</span>
+                </div>
+            </section>
+
+            <!-- Study Timer Section -->
+            <section id="study-timer" class="tab-content fade-in" style="display: none;">
+                <h2>Pomodoro Study Timer</h2>
+                <div class="timer-container">
+                    <div id="timer-display" class="timer-digits">25:00</div>
+                    <div class="timer-controls">
+                        <button class="btn-primary" id="start-btn" onclick="startTimer()">Start</button>
+                        <button class="btn-secondary" onclick="resetTimer()">Reset</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Idea Board Section (Linked from Day 03) -->
+            <section id="idea-board" class="tab-content fade-in" style="display: none;">
+                <h2>Idea Board</h2>
+                <div class="input-section">
+                    <input type="text" id="userName" placeholder="Your Name" class="name-input">
+                    <input type="text" id="ideaInput" placeholder="Enter your idea..." class="idea-input">
+                    <button class="btn-primary" onclick="addIdea()">Add Spark</button>
+                </div>
+                <div id="board" class="idea-grid">
+                    <!-- Ideas will be injected here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <audio id="bell-sound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
