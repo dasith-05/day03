@@ -21,49 +21,11 @@ function showSection(name) {
 }
 
 // ══════════════════════════════════════════
-// DARK / LIGHT MODE
+//  DARK / LIGHT MODE
 // ══════════════════════════════════════════
-
 function toggleDark(cb) {
-
-const label = document.getElementById("modeLabel")
-
-if(cb.checked){
-
-document.body.classList.remove("light")
-label.textContent="🌙 Dark"
-
+  document.body.classList.toggle('light', !cb.checked);
 }
-else{
-
-document.body.classList.add("light")
-label.textContent="☀️ Light"
-
-}
-
-}
-
-// save mode preference
-document.addEventListener("DOMContentLoaded",()=>{
-
-const toggle=document.getElementById("darkToggle")
-const label=document.getElementById("modeLabel")
-
-if(localStorage.getItem("mode")==="light"){
-
-document.body.classList.add("light")
-toggle.checked=false
-label.textContent="☀️ Light"
-
-}
-
-toggle.addEventListener("change",()=>{
-
-localStorage.setItem("mode",toggle.checked?"dark":"light")
-
-})
-
-})
 
 // ══════════════════════════════════════════
 //  GPA CALCULATOR

@@ -15,7 +15,6 @@
     <div class="blob blob-3"></div>
   </div>
 
-  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="navbar-logo">
       <div class="logo-badge">ST</div>
@@ -35,19 +34,15 @@
     <div class="navbar-right">
       <span class="toggle-label" id="modeLabel">🌙 Dark</span>
       <label class="toggle">
-        <input type="checkbox" id="darkToggle" onchange="toggleMode(this)">
+        <input type="checkbox" id="darkToggle" onchange="toggleDark(this)" checked>
         <span class="toggle-slider"></span>
       </label>
     </div>
   </nav>
 
-  <!-- LAYOUT -->
   <div class="layout">
-
-    <!-- SIDEBAR -->
     <aside class="sidebar">
       <div class="sidebar-title">Upcoming Events</div>
-
       <div class="event-item">
         <div class="event-name">Midterm – CMPS 101</div>
         <div class="event-date">March 15, 2026 · 10:00 AM</div>
@@ -63,32 +58,14 @@
         <div class="event-date">March 18, 2026 · 3:00 PM</div>
         <span class="event-tag">Study</span>
       </div>
-      <div class="event-item">
-        <div class="event-name">Final – ECON 100A</div>
-        <div class="event-date">March 22, 2026 · 8:00 AM</div>
-        <span class="event-tag">Exam</span>
-      </div>
-      <div class="event-item">
-        <div class="event-name">Career Fair – OPERS Field</div>
-        <div class="event-date">March 25, 2026 · 11:00 AM</div>
-        <span class="event-tag gold">Event</span>
-      </div>
-      <div class="event-item">
-        <div class="event-name">Paper Due – LTCR 80W</div>
-        <div class="event-date">March 27, 2026 · 11:59 PM</div>
-        <span class="event-tag gold">Assignment</span>
-      </div>
     </aside>
 
-    <!-- MAIN CONTENT -->
     <main class="main">
-
-      <!-- WELCOME -->
       <section id="section-welcome" class="section active">
         <div class="welcome-card">
           <div class="welcome-eyebrow">Welcome back, Banana Slug 🐌</div>
           <div class="welcome-title">Your Academic<br><span>Command Center</span></div>
-          <div class="welcome-desc">Everything you need to crush your quarter — calculate your GPA, run focused Pomodoro sessions, and share ideas with your cohort.</div>
+          <div class="welcome-desc">Everything you need to crush your quarter — calculate your GPA, run focused Pomodoro sessions, and share ideas.</div>
           <div class="welcome-chips">
             <div class="chip" onclick="showSection('gpa')">🎓 GPA Calculator</div>
             <div class="chip" onclick="showSection('timer')">🍅 Pomodoro Timer</div>
@@ -114,7 +91,6 @@
         </div>
       </section>
 
-      <!-- GPA CALCULATOR -->
       <section id="section-gpa" class="section">
         <div class="card-panel">
           <div class="panel-header">
@@ -132,9 +108,9 @@
           </div>
           <div class="gpa-courses" id="courseList">
             <div class="course-row first-row">
-              <input type="text" placeholder="e.g. CMPS 101" />
-              <input type="number" placeholder="Credits" min="1" max="6" />
-              <select>
+              <input type="text" placeholder="e.g. CMPS 101">
+              <input type="number" placeholder="Credits" min="1" max="6">
+              <select id="initialGrade">
                 <option value="">Grade</option>
                 <option value="4.0">A+ (4.0)</option>
                 <option value="4.0">A  (4.0)</option>
@@ -164,7 +140,6 @@
         </div>
       </section>
 
-      <!-- POMODORO TIMER -->
       <section id="section-timer" class="section">
         <div class="card-panel">
           <div class="panel-header">
@@ -208,7 +183,6 @@
         </div>
       </section>
 
-      <!-- IDEAHUB -->
       <section id="section-ideas" class="section">
         <div class="card-panel ideahub-panel">
           <div class="panel-header">
@@ -226,7 +200,6 @@
           <div id="board"></div>
         </div>
       </section>
-
     </main>
   </div>
 
