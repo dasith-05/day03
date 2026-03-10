@@ -347,6 +347,21 @@ body.dark-mode .timer-digits {
     transform: translateY(-5px);
 }
 
+/* Dark Mode specific for Idea Cards */
+body.dark-mode .idea-card {
+    background: rgba(255, 215, 0, 0.1); /* Gold tint */
+    border-color: var(--ucsc-gold);
+    color: #fff;
+}
+
+body.dark-mode .idea-card strong {
+    color: var(--ucsc-gold) !important;
+}
+
+body.dark-mode .idea-card small {
+    color: #ccc;
+}
+
 .input-section {
     display: flex;
     gap: 10px;
