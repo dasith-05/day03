@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentToolkit | UCSC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="background-blobs">
+    <div class="blob"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <div class="logo-badge">ST</div>
+      <div class="logo-text">
+        StudentToolkit<span>.</span>
+        <small>University of Colombo School of Computing</small>
+      </div>
+    </div>
+
+    <div class="navbar-nav">
+      <button class="nav-link active" onclick="showSection('welcome')">🏠 Home</button>
+      <button class="nav-link" onclick="showSection('gpa')">🎓 GPA Calculator</button>
+      <button class="nav-link" onclick="showSection('timer')">⏱ Study Timer</button>
+      <button class="nav-link" onclick="showSection('ideas')">💡 IdeaHub</button>
+    </div>
+
+    <div class="navbar-right">
+      <span class="toggle-label" id="modeLabel">🌙 Dark</span>
+      <label class="toggle">
+        <input type="checkbox" id="darkToggle" onchange="toggleDark(this)" checked>
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </nav>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-title">Upcoming Events</div>
+      <div class="event-item">
+        <div class="event-name">Semester Exams</div>
+        <div class="event-date">March 15, 2026 · 10:00 AM</div>
+        <span class="event-tag">Exam</span>
+      </div>
+      <div class="event-item">
+        <div class="event-name">Group Portfolio Project</div>
+        <div class="event-date">March 17, 2026 · 11:59 PM</div>
+        <span class="event-tag gold">Assignment</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section id="section-welcome" class="section active">
+        <div class="welcome-card">
+          <div class="welcome-eyebrow">Welcome back, Scholar 🎓</div>
+          <div class="welcome-title">Your Academic<br><span>Command Center</span></div>
+          <div class="welcome-desc">The ultimate toolkit for UCSC students — calculate your GPA, stay focused, and share your sparks.</div>
+          <div class="welcome-chips">
+            <div class="chip" onclick="showSection('gpa')">🎓 GPA Calculator</div>
+            <div class="chip" onclick="showSection('timer')">🍅 Pomodoro Timer</div>
+            <div class="chip" onclick="showSection('ideas')">💡 IdeaHub</div>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card" onclick="showSection('gpa')">
+            <div class="stat-icon">🎓</div>
+            <div class="stat-label">GPA Calculator</div>
+            <div class="stat-sub">Weighted GPA by credits</div>
+          </div>
+          <div class="stat-card" onclick="showSection('timer')">
+            <div class="stat-icon">⏱</div>
+            <div class="stat-label">Study Timer</div>
+            <div class="stat-sub">25-min focused sessions</div>
+          </div>
+          <div class="stat-card" onclick="showSection('ideas')">
+            <div class="stat-icon">💡</div>
+            <div class="stat-label">IdeaHub</div>
+            <div class="stat-sub">Reveal & share sparks</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="section-gpa" class="section">
+        <div class="card-panel">
+          <div class="panel-header">
+            <div class="panel-icon">🎓</div>
+            <div>
+              <div class="panel-title">GPA Calculator</div>
+              <div class="panel-subtitle">Enter your courses to compute your cumulative GPA</div>
+            </div>
+          </div>
+          <div class="col-headers">
+            <span>Course Name</span>
+            <span>Credits</span>
+            <span>Grade</span>
+            <span></span>
+          </div>
+          <div class="gpa-courses" id="courseList">
+            <div class="course-row first-row">
+              <input type="text" placeholder="e.g. SCS 1201">
+              <input type="number" placeholder="Credits" min="1" max="6">
+              <select id="initialGrade">
+                <option value="">Grade</option>
+                <option value="4.0">A+ (4.0)</option>
+                <option value="4.0">A  (4.0)</option>
+                <option value="3.7">A- (3.7)</option>
+                <option value="3.3">B+ (3.3)</option>
+                <option value="3.0">B  (3.0)</option>
+                <option value="2.7">B- (2.7)</option>
+                <option value="2.3">C+ (2.3)</option>
+                <option value="2.0">C  (2.0)</option>
+                <option value="1.7">C- (1.7)</option>
+                <option value="1.3">D+ (1.3)</option>
+                <option value="1.0">D  (1.0)</option>
+                <option value="0.0">F  (0.0)</option>
+              </select>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-ghost" onclick="addCourse()">+ Add Course</button>
+            <button class="btn btn-primary" onclick="calculateGPA()">Calculate GPA</button>
+            <button class="btn btn-ghost" onclick="resetGPA()">Reset</button>
+          </div>
+          <div class="gpa-result" id="gpaResult">
+            <div class="gpa-result-label">Your Cumulative GPA</div>
+            <div class="gpa-result-number" id="gpaNumber">—</div>
+            <div class="gpa-result-grade" id="gpaGrade"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="section-timer" class="section">
+        <div class="card-panel">
+          <div class="panel-header">
+            <div class="panel-icon">⏱</div>
+            <div>
+              <div class="panel-title">Pomodoro Timer</div>
+              <div class="panel-subtitle">25-minute focused study sessions</div>
+            </div>
+          </div>
+          <div class="timer-container">
+            <div class="timer-ring">
+              <svg width="240" height="240" viewBox="0 0 240 240">
+                <defs>
+                  <linearGradient id="timerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:var(--primary)"/>
+                    <stop offset="100%" style="stop-color:var(--secondary)"/>
+                  </linearGradient>
+                </defs>
+                <circle class="timer-ring-bg" cx="120" cy="120" r="110"/>
+                <circle class="timer-ring-progress" id="timerProgress" cx="120" cy="120" r="110"/>
+              </svg>
+              <div class="timer-display">
+                <div class="timer-time" id="timerDisplay">25:00</div>
+                <div class="timer-mode">Focus Session</div>
+              </div>
+            </div>
+            <div class="timer-sessions" id="sessionDots">
+              <div class="session-dot"></div>
+              <div class="session-dot"></div>
+              <div class="session-dot"></div>
+              <div class="session-dot"></div>
+            </div>
+            <div class="timer-controls">
+              <button class="btn btn-primary" id="startBtn" onclick="toggleTimer()">▶ Start</button>
+              <button class="btn btn-ghost" onclick="resetTimer()">↺ Reset</button>
+            </div>
+            <div class="timer-notification" id="timerNotif">
+              🎉 Session complete! Time for a 5-minute break!
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="section-ideas" class="section">
+        <div class="card-panel ideahub-panel">
+          <div class="panel-header">
+            <div class="panel-icon">💡</div>
+            <div>
+              <div class="panel-title">IdeaHub</div>
+              <div class="panel-subtitle">Share your sparks with the community</div>
+            </div>
+          </div>
+          <div class="idea-input-section">
+            <input type="text" id="userName" placeholder="Your Name" class="name-input">
+            <input type="text" id="ideaInput" placeholder="Enter your idea..." class="idea-input-field">
+            <button class="btn btn-primary" onclick="addIdea()">Add Spark ✦</button>
+          </div>
+          <div id="board"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
