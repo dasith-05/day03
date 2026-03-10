@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark | Reveal Ideaboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="background-blobs">
+        <div class="blob"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>IdeaHUB<span>.</span></h1>
+            <p style="color: #94a3b8;">Hover over a creator to reveal their idea.</p>
+        </header>
+
+        <div class="input-section">
+            <input type="text" id="userName" placeholder="Your Name" class="name-input">
+            <input type="text" id="ideaInput" placeholder="Enter your idea..." class="idea-input">
+            <button class="add-btn" onclick="addIdea()">Add Spark</button>
+        </div>
+
+        <main id="board">
+            </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

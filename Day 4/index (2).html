@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UCSC Student Toolkit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="navbar-logo" href="#">
+    <div class="logo-img">UC</div>
+    <div class="logo-text">
+      Student Toolkit
+      <span>UoC School of Computing</span>
+    </div>
+  </a>
+
+  <nav class="navbar-nav">
+    <button class="nav-link" onclick="showSection('gpa')">🎓 GPA Calculator</button>
+    <button class="nav-link" onclick="showSection('timer')">⏱ Study Timer</button>
+  </nav>
+
+  <div class="navbar-right">
+    <div class="toggle-wrap">
+      <span class="toggle-label">Dark</span>
+      <label class="toggle">
+        <input type="checkbox" id="darkToggle" onchange="toggleDark(this)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+</nav>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-title">Upcoming Events</div>
+
+    <div class="event-item">
+      <div class="event-name">Midterm – CMPS 101</div>
+      <div class="event-date">March 15, 2026 · 10:00 AM</div>
+      <span class="event-tag">Exam</span>
+    </div>
+    <div class="event-item">
+      <div class="event-name">Project Due – AMS 147</div>
+      <div class="event-date">March 17, 2026 · 11:59 PM</div>
+      <span class="event-tag gold">Assignment</span>
+    </div>
+    <div class="event-item">
+      <div class="event-name">Study Group – Porter Library</div>
+      <div class="event-date">March 18, 2026 · 3:00 PM</div>
+      <span class="event-tag">Study</span>
+    </div>
+    <div class="event-item">
+      <div class="event-name">Final – ECON 100A</div>
+      <div class="event-date">March 22, 2026 · 8:00 AM</div>
+      <span class="event-tag">Exam</span>
+    </div>
+    <div class="event-item">
+      <div class="event-name">Career Fair – OPERS Field</div>
+      <div class="event-date">March 25, 2026 · 11:00 AM</div>
+      <span class="event-tag gold">Event</span>
+    </div>
+    <div class="event-item">
+      <div class="event-name">Paper Due – LTCR 80W</div>
+      <div class="event-date">March 27, 2026 · 11:59 PM</div>
+      <span class="event-tag gold">Assignment</span>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- Welcome Banner -->
+    <div class="welcome-card" id="welcomeCard">
+      <div class="welcome-eyebrow">Welcome back, Banana Slug</div>
+      <div class="welcome-title">Your Academic<br><span>Command Center</span></div>
+      <div class="welcome-desc">Everything you need to crush your quarter — track your GPA, time your study sessions, and stay on top of what's due.</div>
+      <div class="welcome-chips">
+        <div class="chip" onclick="showSection('gpa')">🎓 Calculate GPA</div>
+        <div class="chip" onclick="showSection('timer')">🍅 Start Pomodoro</div>
+      </div>
+    </div>
+
+    <!-- GPA CALCULATOR -->
+    <div class="card" id="gpa-card">
+      <div class="card-header">
+        <div class="card-icon">🎓</div>
+        <div>
+          <div class="card-title">GPA Calculator</div>
+          <div class="card-subtitle">Enter your courses to compute your cumulative GPA</div>
+        </div>
+      </div>
+
+      <div class="col-headers">
+        <span>Course Name</span>
+        <span>Credits</span>
+        <span>Grade</span>
+        <span></span>
+      </div>
+
+      <div class="gpa-courses" id="courseList">
+        <div class="course-row">
+          <input type="text" placeholder="e.g. CMPS 101" />
+          <input type="number" placeholder="Credits" min="1" max="6" />
+          <select>
+            <option value="">Grade</option>
+            <option value="4.0">A+ (4.0)</option>
+            <option value="4.0">A  (4.0)</option>
+            <option value="3.7">A- (3.7)</option>
+            <option value="3.3">B+ (3.3)</option>
+            <option value="3.0">B  (3.0)</option>
+            <option value="2.7">B- (2.7)</option>
+            <option value="2.3">C+ (2.3)</option>
+            <option value="2.0">C  (2.0)</option>
+            <option value="1.7">C- (1.7)</option>
+            <option value="1.3">D+ (1.3)</option>
+            <option value="1.0">D  (1.0)</option>
+            <option value="0.0">F  (0.0)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="addCourse()">+ Add Course</button>
+        <button class="btn btn-primary" onclick="calculateGPA()">Calculate GPA</button>
+        <button class="btn btn-secondary" onclick="resetGPA()">Reset</button>
+      </div>
+
+      <div class="gpa-result" id="gpaResult">
+        <div class="gpa-result-label">Your Cumulative GPA</div>
+        <div class="gpa-result-number" id="gpaNumber">—</div>
+        <div class="gpa-result-grade" id="gpaGrade"></div>
+      </div>
+    </div>
+
+    <!-- POMODORO TIMER -->
+    <div class="card" id="timer-card">
+      <div class="card-header">
+        <div class="card-icon">⏱</div>
+        <div>
+          <div class="card-title">Pomodoro Timer</div>
+          <div class="card-subtitle">25-minute focused study sessions</div>
+        </div>
+      </div>
+
+      <div class="timer-container">
+        <div class="timer-ring">
+          <svg width="240" height="240" viewBox="0 0 240 240">
+            <defs>
+              <linearGradient id="timerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#6B2737"/>
+                <stop offset="100%" style="stop-color:#C6973F"/>
+              </linearGradient>
+            </defs>
+            <circle class="timer-ring-bg" cx="120" cy="120" r="110"/>
+            <circle class="timer-ring-progress" id="timerProgress" cx="120" cy="120" r="110"/>
+          </svg>
+          <div class="timer-display">
+            <div class="timer-time" id="timerDisplay">25:00</div>
+            <div class="timer-mode" id="timerMode">Focus Session</div>
+          </div>
+        </div>
+
+        <div class="timer-sessions" id="sessionDots">
+          <div class="session-dot"></div>
+          <div class="session-dot"></div>
+          <div class="session-dot"></div>
+          <div class="session-dot"></div>
+        </div>
+
+        <div class="timer-controls">
+          <button class="btn btn-gold" id="startBtn" onclick="toggleTimer()">▶ Start</button>
+          <button class="btn btn-secondary" onclick="resetTimer()">↺ Reset</button>
+        </div>
+
+        <div class="timer-notification" id="timerNotif">
+          🎉 Session complete! Time for a 5-minute break!
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
