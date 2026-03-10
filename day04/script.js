@@ -95,10 +95,11 @@ function updateTimerDisplay() {
 }
 
 function startTimer() {
-    if (isRunning) return; // Prevent multiple intervals
+    if (isRunning) return; 
     
     isRunning = true;
     document.getElementById('start-btn').disabled = true;
+    document.getElementById('stop-btn').disabled = false;
     
     timerInterval = setInterval(() => {
         if (timeLeft > 0) {
@@ -108,13 +109,20 @@ function startTimer() {
             clearInterval(timerInterval);
             isRunning = false;
             document.getElementById('start-btn').disabled = false;
+            document.getElementById('stop-btn').disabled = true;
             
-            // Bell sound and notification
             const bell = document.getElementById('bell-sound');
             bell.play();
             alert("Time's up! Take a break.");
         }
     }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+    isRunning = false;
+    document.getElementById('start-btn').disabled = false;
+    document.getElementById('stop-btn').disabled = true;
 }
 
 function resetTimer() {
@@ -123,6 +131,7 @@ function resetTimer() {
     timeLeft = 25 * 60;
     updateTimerDisplay();
     document.getElementById('start-btn').disabled = false;
+    document.getElementById('stop-btn').disabled = true;
 }
 
 // Idea Board Logic (Ported from Day 03)
