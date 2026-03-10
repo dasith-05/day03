@@ -20,7 +20,7 @@
       <div class="logo-badge">ST</div>
       <div class="logo-text">
         StudentToolkit<span>.</span>
-        <small>UC Santa Cruz</small>
+        <small>University of Colombo School of Computing</small>
       </div>
     </div>
 
@@ -44,28 +44,23 @@
     <aside class="sidebar">
       <div class="sidebar-title">Upcoming Events</div>
       <div class="event-item">
-        <div class="event-name">Midterm – CMPS 101</div>
+        <div class="event-name">Semester Exams</div>
         <div class="event-date">March 15, 2026 · 10:00 AM</div>
         <span class="event-tag">Exam</span>
       </div>
       <div class="event-item">
-        <div class="event-name">Project Due – AMS 147</div>
+        <div class="event-name">Group Portfolio Project</div>
         <div class="event-date">March 17, 2026 · 11:59 PM</div>
         <span class="event-tag gold">Assignment</span>
-      </div>
-      <div class="event-item">
-        <div class="event-name">Study Group – Porter Library</div>
-        <div class="event-date">March 18, 2026 · 3:00 PM</div>
-        <span class="event-tag">Study</span>
       </div>
     </aside>
 
     <main class="main">
       <section id="section-welcome" class="section active">
         <div class="welcome-card">
-          <div class="welcome-eyebrow">Welcome back, Banana Slug 🐌</div>
+          <div class="welcome-eyebrow">Welcome back, Scholar 🎓</div>
           <div class="welcome-title">Your Academic<br><span>Command Center</span></div>
-          <div class="welcome-desc">Everything you need to crush your quarter — calculate your GPA, run focused Pomodoro sessions, and share ideas.</div>
+          <div class="welcome-desc">The ultimate toolkit for UCSC students — calculate your GPA, stay focused, and share your sparks.</div>
           <div class="welcome-chips">
             <div class="chip" onclick="showSection('gpa')">🎓 GPA Calculator</div>
             <div class="chip" onclick="showSection('timer')">🍅 Pomodoro Timer</div>
@@ -81,12 +76,12 @@
           <div class="stat-card" onclick="showSection('timer')">
             <div class="stat-icon">⏱</div>
             <div class="stat-label">Study Timer</div>
-            <div class="stat-sub">25-min Pomodoro sessions</div>
+            <div class="stat-sub">25-min focused sessions</div>
           </div>
           <div class="stat-card" onclick="showSection('ideas')">
             <div class="stat-icon">💡</div>
             <div class="stat-label">IdeaHub</div>
-            <div class="stat-sub">Reveal &amp; share ideas</div>
+            <div class="stat-sub">Reveal & share sparks</div>
           </div>
         </div>
       </section>
@@ -108,7 +103,7 @@
           </div>
           <div class="gpa-courses" id="courseList">
             <div class="course-row first-row">
-              <input type="text" placeholder="e.g. CMPS 101">
+              <input type="text" placeholder="e.g. SCS 1201">
               <input type="number" placeholder="Credits" min="1" max="6">
               <select id="initialGrade">
                 <option value="">Grade</option>
@@ -154,8 +149,8 @@
               <svg width="240" height="240" viewBox="0 0 240 240">
                 <defs>
                   <linearGradient id="timerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style="stop-color:#8b5cf6"/>
-                    <stop offset="100%" style="stop-color:#ec4899"/>
+                    <stop offset="0%" style="stop-color:var(--primary)"/>
+                    <stop offset="100%" style="stop-color:var(--secondary)"/>
                   </linearGradient>
                 </defs>
                 <circle class="timer-ring-bg" cx="120" cy="120" r="110"/>
@@ -189,7 +184,7 @@
             <div class="panel-icon">💡</div>
             <div>
               <div class="panel-title">IdeaHub</div>
-              <div class="panel-subtitle">Hover over a creator to reveal their idea</div>
+              <div class="panel-subtitle">Share your sparks with the community</div>
             </div>
           </div>
           <div class="idea-input-section">
