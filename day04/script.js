@@ -33,8 +33,19 @@ function addCourseRow() {
     newRow.innerHTML = `
         <input type="number" placeholder="Credits (e.g. 3)" class="credits">
         <input type="text" placeholder="Grade (e.g. A, B+)" class="grade">
+        <button class="btn-remove" onclick="removeCourseRow(this)">&times;</button>
     `;
     courseList.appendChild(newRow);
+}
+
+function removeCourseRow(button) {
+    const courseList = document.getElementById('course-list');
+    if (courseList.children.length > 1) {
+        button.parentElement.remove();
+        calculateGPA(); // Recalculate GPA automatically after removal
+    } else {
+        alert("At least one course is required.");
+    }
 }
 
 const gradePoints = {

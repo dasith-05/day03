@@ -240,6 +240,22 @@ body.dark-mode .tab-content {
     background-color: #a00000;
 }
 
+.btn-remove {
+    background: transparent;
+    color: #ff4d4d;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 5px;
+    transition: transform 0.2s;
+}
+
+.btn-remove:hover {
+    transform: scale(1.2);
+    color: #cc0000;
+}
+
 .btn-secondary {
     background-color: var(--ucsc-gold);
     color: var(--ucsc-maroon);
