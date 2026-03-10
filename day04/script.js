@@ -84,7 +84,8 @@ function calculateGPA() {
 
 // Pomodoro Timer Logic
 let timerInterval;
-let timeLeft = 25 * 60; // 25 minutes in seconds
+let defaultTime = 25 * 60;
+let timeLeft = defaultTime;
 let isRunning = false;
 
 function updateTimerDisplay() {
@@ -94,13 +95,33 @@ function updateTimerDisplay() {
         `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
+function setCustomTime() {
+    const mins = parseInt(document.getElementById('custom-minutes').value);
+    if (!isNaN(mins) && mins > 0 && mins <= 120) {
+        if (isRunning) stopTimer();
+        defaultTime = mins * 60;
+        timeLeft = defaultTime;
+        updateTimerDisplay();
+    } else {
+        alert("Please enter a valid number of minutes (1-120).");
+    }
+}
+
+function toggleTimer() {
+    const btn = document.getElementById('toggle-btn');
+    if (!isRunning) {
+        startTimer();
+        btn.innerText = "Stop";
+        btn.classList.replace('btn-primary', 'btn-warning');
+    } else {
+        stopTimer();
+        btn.innerText = "Start";
+        btn.classList.replace('btn-warning', 'btn-primary');
+    }
+}
+
 function startTimer() {
-    if (isRunning) return; 
-    
     isRunning = true;
-    document.getElementById('start-btn').disabled = true;
-    document.getElementById('stop-btn').disabled = false;
-    
     timerInterval = setInterval(() => {
         if (timeLeft > 0) {
             timeLeft--;
@@ -108,8 +129,9 @@ function startTimer() {
         } else {
             clearInterval(timerInterval);
             isRunning = false;
-            document.getElementById('start-btn').disabled = false;
-            document.getElementById('stop-btn').disabled = true;
+            const btn = document.getElementById('toggle-btn');
+            btn.innerText = "Start";
+            btn.classList.replace('btn-warning', 'btn-primary');
             
             const bell = document.getElementById('bell-sound');
             bell.play();
@@ -121,17 +143,15 @@ function startTimer() {
 function stopTimer() {
     clearInterval(timerInterval);
     isRunning = false;
-    document.getElementById('start-btn').disabled = false;
-    document.getElementById('stop-btn').disabled = true;
 }
 
 function resetTimer() {
-    clearInterval(timerInterval);
-    isRunning = false;
-    timeLeft = 25 * 60;
+    if (isRunning) stopTimer();
+    timeLeft = defaultTime;
     updateTimerDisplay();
-    document.getElementById('start-btn').disabled = false;
-    document.getElementById('stop-btn').disabled = true;
+    const btn = document.getElementById('toggle-btn');
+    btn.innerText = "Start";
+    btn.classList.replace('btn-warning', 'btn-primary');
 }
 
 // Idea Board Logic (Ported from Day 03)

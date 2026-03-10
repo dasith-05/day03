@@ -62,10 +62,14 @@
             <section id="study-timer" class="tab-content fade-in" style="display: none;">
                 <h2>Pomodoro Study Timer</h2>
                 <div class="timer-container">
+                    <div class="timer-settings">
+                        <input type="number" id="custom-minutes" value="25" min="1" max="120">
+                        <span>Minutes</span>
+                        <button class="btn-secondary" onclick="setCustomTime()">Set Time</button>
+                    </div>
                     <div id="timer-display" class="timer-digits">25:00</div>
                     <div class="timer-controls">
-                        <button class="btn-primary" id="start-btn" onclick="startTimer()">Start</button>
-                        <button class="btn-warning" id="stop-btn" onclick="stopTimer()" disabled>Stop</button>
+                        <button class="btn-primary" id="toggle-btn" onclick="toggleTimer()">Start</button>
                         <button class="btn-secondary" onclick="resetTimer()">Reset</button>
                     </div>
                 </div>

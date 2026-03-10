@@ -296,7 +296,23 @@ body.dark-mode .tab-content {
 /* Timer Styles */
 .timer-container {
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 1rem;
+}
+
+.timer-settings {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.timer-settings input {
+    width: 80px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
 }
 
 .timer-digits {
