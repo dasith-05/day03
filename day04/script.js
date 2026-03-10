@@ -96,14 +96,21 @@ function updateTimerDisplay() {
 }
 
 function setCustomTime() {
-    const mins = parseInt(document.getElementById('custom-minutes').value);
-    if (!isNaN(mins) && mins > 0 && mins <= 120) {
+    const mins = parseInt(document.getElementById('custom-minutes').value) || 0;
+    const secs = parseInt(document.getElementById('custom-seconds').value) || 0;
+    
+    if (mins >= 0 && mins <= 120 && secs >= 0 && secs <= 59 && (mins + secs > 0)) {
         if (isRunning) stopTimer();
-        defaultTime = mins * 60;
+        defaultTime = (mins * 60) + secs;
         timeLeft = defaultTime;
         updateTimerDisplay();
+        
+        // Update the Start/Stop button state just in case
+        const btn = document.getElementById('toggle-btn');
+        btn.innerText = "Start";
+        btn.classList.replace('btn-warning', 'btn-primary');
     } else {
-        alert("Please enter a valid number of minutes (1-120).");
+        alert("Please enter valid time (Min: 0-120, Sec: 0-59). Total time must be greater than 0.");
     }
 }
 
